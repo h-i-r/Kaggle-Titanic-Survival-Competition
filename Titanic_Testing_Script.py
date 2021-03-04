@@ -269,7 +269,7 @@ def testing_features(X_test):
 def main():
 
     # training dataset
-    df_titanic = pd.read_csv("E:\\Projects\\Titanic\\data\\train.csv")
+    df_titanic = pd.read_csv("train.csv")
     print(df_titanic.shape)
     print(df_titanic.dtypes)
     print(df_titanic.head(25))
@@ -277,10 +277,10 @@ def main():
     # training features
     df_titanic = training_features(df_titanic)
     # Export training data
-    df_titanic.to_csv("E:\\Projects\\Titanic\\data\\df_titanic.csv", index=False)
+    df_titanic.to_csv("df_titanic.csv", index=False)
 
     # test data
-    test_set = pd.read_csv("E:\\Projects\\Titanic\\data\\test.csv")
+    test_set = pd.read_csv("test.csv")
     # test features
     test_set = testing_features(test_set)
 
@@ -302,7 +302,7 @@ def main():
     Survived = pd.DataFrame(y_pred, columns=['Survived'])
     final_submission = pd.concat([test_set['PassengerId'], Survived], axis=1)
     final_submission = final_submission.astype(int)
-    final_submission = final_submission.to_csv('E:\\Projects\\Titanic\\data\\final\\submission.csv', index=False)
+    final_submission = final_submission.to_csv('submission.csv', index=False)
 
 if __name__ == "__main__" :
     main()
