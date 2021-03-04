@@ -187,7 +187,7 @@ def RandomForest(df_titanic):
     y_pred = rfc.predict(X_test)
 
     metrics.plot_confusion_matrix(rfc, X_test, y_test, cmap='Pastel1')
-    plt.savefig('E:\\Projects\\Titanic\\data\\RandomForest\\results.png', bbox_inches='tight')
+    plt.savefig('results.png', bbox_inches='tight')
     score = str(round(metrics.f1_score(y_test, y_pred) * 100, 3))
     accuracy_train = str(round(rfc.score(X_train, y_train) * 100, 3))
     accuracy_test = str(round(rfc.score(X_test, y_test) * 100, 3))
@@ -205,8 +205,8 @@ def RandomForest(df_titanic):
         {'feature': X_train.columns, 'importance': np.round(rfc.feature_importances_, 3)})
     feature_importances_ = feature_importances_.sort_values('importance', ascending=False).set_index('feature')
 
-    feature_importances_.to_csv('E:\\Projects\\Titanic\\data\\RandomForest\\feature_importances_.csv')
-    results.to_csv('E:\\Projects\\Titanic\\data\\RandomForest\\results.csv', index=False)
+    feature_importances_.to_csv('feature_importances_.csv')
+    results.to_csv('results.csv', index=False)
     print(results)
 
 def XGB(df_titanic):
@@ -221,7 +221,7 @@ def XGB(df_titanic):
     y_pred = gb.predict(X_test)
 
     metrics.plot_confusion_matrix(gb, X_test, y_test, cmap='Pastel1')
-    plt.savefig('E:\\Projects\\Titanic\\data\\XGB\\results.png', bbox_inches='tight')
+    plt.savefig('results.png', bbox_inches='tight')
     score = str(round(metrics.f1_score(y_test, y_pred) * 100, 3))
     accuracy_train = str(round(gb.score(X_train, y_train) * 100, 3))
     accuracy_test = str(round(gb.score(X_test, y_test) * 100, 3))
@@ -239,8 +239,8 @@ def XGB(df_titanic):
         {'feature': X_train.columns, 'importance': np.round(gb.feature_importances_, 3)})
     feature_importances_ = feature_importances_.sort_values('importance', ascending=False).set_index('feature')
 
-    feature_importances_.to_csv('E:\\Projects\\Titanic\\data\\XGB\\feature_importances_.csv')
-    results.to_csv('E:\\Projects\\Titanic\\data\\XGB\\results.csv', index=False)
+    feature_importances_.to_csv('feature_importances_.csv')
+    results.to_csv('results.csv', index=False)
     print(results)
 
 def Logistic_Regression(df_titanic):
@@ -255,7 +255,7 @@ def Logistic_Regression(df_titanic):
     y_pred = lr.predict(X_test)
 
     metrics.plot_confusion_matrix(lr, X_test, y_test, cmap='Pastel1')
-    plt.savefig('E:\\Projects\\Titanic\\data\\LR\\results.png', bbox_inches='tight')
+    plt.savefig('results.png', bbox_inches='tight')
     score = str(round(metrics.f1_score(y_test, y_pred) * 100, 3))
     accuracy_train = str(round(lr.score(X_train, y_train) * 100, 3))
     accuracy_test = str(round(lr.score(X_test, y_test) * 100, 3))
@@ -269,7 +269,7 @@ def Logistic_Regression(df_titanic):
         {'Accuracy_Train': accuracy_train, 'Accuracy_Test': accuracy_test, 'Precision': precision,
          'Recall': recall, 'F1-Score': score}, ignore_index=True)
 
-    results.to_csv('E:\\Projects\\Titanic\\data\\LR\\results.csv', index=False)
+    results.to_csv('results.csv', index=False)
     print(results)
 
 def Naïve_Bayes_Classifiers(df_titanic):
@@ -285,7 +285,7 @@ def Naïve_Bayes_Classifiers(df_titanic):
     y_pred = nb.predict(X_test)
 
     metrics.plot_confusion_matrix(nb, X_test, y_test, cmap='Pastel1')
-    plt.savefig('E:\\Projects\\Titanic\\data\\Bayes\\results.png', bbox_inches='tight')
+    plt.savefig('results.png', bbox_inches='tight')
     score = str(round(metrics.f1_score(y_test, y_pred) * 100, 3))
     accuracy_train = str(round(nb.score(X_train, y_train) * 100, 3))
     accuracy_test = str(round(nb.score(X_test, y_test) * 100, 3))
@@ -299,7 +299,7 @@ def Naïve_Bayes_Classifiers(df_titanic):
         {'Accuracy_Train': accuracy_train, 'Accuracy_Test': accuracy_test, 'Precision': precision,
          'Recall': recall, 'F1-Score': score}, ignore_index=True)
 
-    results.to_csv('E:\\Projects\\Titanic\\data\\Bayes\\results.csv', index=False)
+    results.to_csv('results.csv', index=False)
     print(results)
 
 def SVM(df_titanic):
@@ -314,7 +314,7 @@ def SVM(df_titanic):
     y_pred = svm.predict(X_test)
 
     metrics.plot_confusion_matrix(svm, X_test, y_test, cmap='Pastel1')
-    plt.savefig('E:\\Projects\\Titanic\\data\\SVM\\results.png', bbox_inches='tight')
+    plt.savefig('results.png', bbox_inches='tight')
     score = str(round(metrics.f1_score(y_test, y_pred) * 100, 3))
     accuracy_train = str(round(svm.score(X_train, y_train) * 100, 3))
     accuracy_test = str(round(svm.score(X_test, y_test) * 100, 3))
@@ -328,14 +328,14 @@ def SVM(df_titanic):
         {'Accuracy_Train': accuracy_train, 'Accuracy_Test': accuracy_test, 'Precision': precision,
          'Recall': recall, 'F1-Score': score}, ignore_index=True)
 
-    results.to_csv('E:\\Projects\\Titanic\\data\\SVM\\results.csv', index=False)
+    results.to_csv('results.csv', index=False)
     print(results)
 
 
 def main():
 
     # training dataset
-    df_titanic = pd.read_csv("E:\\Projects\\Titanic\\data\\train.csv")
+    df_titanic = pd.read_csv("train.csv")
     print(df_titanic.shape)
     print(df_titanic.dtypes)
     print(df_titanic.head(25))
@@ -345,7 +345,7 @@ def main():
     df_titanic = training_features(df_titanic)
 
     # Export training data
-    df_titanic.to_csv("E:\\Projects\\Titanic\\data\\df_titanic.csv", index=False)
+    df_titanic.to_csv("df_titanic.csv", index=False)
 
     # T R A I N I N G
 
